@@ -7,4 +7,3 @@ The first public release is intentionally local-versus-bot. Multiplayer and acco
 ## Run locally
 
 Open `index.html` in a browser, or serve this directory with any static HTTP server.
-
