@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: onev1-cribbage
+    runtime: static
+    buildCommand: echo "Static site ready"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+

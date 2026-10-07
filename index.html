@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a2c24" />
+    <meta
+      name="description"
+      content="A polished local-versus-bot Cribbage table. First to 121 wins."
+    />
+    <title>1v1 Cribbage — Play the cards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="1v1 Cribbage home">
+          <span class="brand-mark">1V1</span>
+          <span class="brand-name">Cribbage</span>
+        </a>
+        <div class="game-meta">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Local table</span>
+        </div>
+      </header>
+
+      <section class="scoreboard" aria-label="Match score">
+        <article class="score-card player-score">
+          <div>
+            <p class="eyebrow">You</p>
+            <h2 id="player-score">0</h2>
+          </div>
+          <div class="score-track" aria-hidden="true"><span id="player-peg"></span></div>
+        </article>
+        <div class="match-detail">
+          <span id="hand-label">Hand 1</span>
+          <strong>First to 121</strong>
+          <span id="dealer-label">Dealer: Bot</span>
+        </div>
+        <article class="score-card bot-score">
+          <div>
+            <p class="eyebrow">Table Bot</p>
+            <h2 id="bot-score">0</h2>
+          </div>
+          <div class="score-track" aria-hidden="true"><span id="bot-peg"></span></div>
+        </article>
+      </section>
+
+      <section class="game-layout">
+        <section class="table" aria-label="Cribbage table">
+          <div class="table-glow"></div>
+          <div class="table-heading">
+            <div>
+              <p class="eyebrow">Current hand</p>
+              <h1 id="phase-title">Choose two cards for the crib</h1>
+            </div>
+            <div class="turn-chip" id="turn-chip" aria-live="polite">Your discard</div>
+          </div>
+
+          <section class="opponent-zone card-zone" aria-label="Bot cards">
+            <div class="zone-label"><span>Table Bot</span><span id="bot-card-count">6 cards</span></div>
+            <div id="bot-hand" class="hand opponent-hand"></div>
+          </section>
+
+          <section class="center-zone">
+            <div class="crib-panel">
+              <p class="eyebrow">Crib</p>
+              <div id="crib-cards" class="crib-cards"></div>
+              <span id="crib-owner">Bot's crib</span>
+            </div>
+            <div class="pegging-panel">
+              <p class="eyebrow">Pegging count</p>
+              <strong id="running-total">0</strong>
+              <div id="pegging-cards" class="pegging-cards" aria-label="Pegging sequence"></div>
+            </div>
+            <div class="starter-panel">
+              <p class="eyebrow">Starter</p>
+              <div id="starter-card" class="starter-card placeholder">?</div>
+            </div>
+          </section>
+
+          <section class="player-zone card-zone" aria-label="Your cards">
+            <div class="zone-label"><span>Your hand</span><span id="selection-count">Pick 2 cards</span></div>
+            <div id="player-hand" class="hand player-hand"></div>
+          </section>
+        </section>
+
+        <aside class="side-panel">
+          <section class="action-panel">
+            <p class="eyebrow">Play desk</p>
+            <p id="instruction" class="instruction" aria-live="polite"></p>
+            <button id="primary-action" class="primary-action" type="button">Add to crib</button>
+            <button id="secondary-action" class="secondary-action" type="button" hidden>Go</button>
+          </section>
+
+          <section class="score-breakdown" aria-label="Latest score details">
+            <div class="panel-title-row">
+              <p class="eyebrow">Scoring</p>
+              <button id="new-match" class="text-button" type="button">New match</button>
+            </div>
+            <div id="scoring-details" class="scoring-details">
+              <p class="muted">Scoring details will appear here.</p>
+            </div>
+          </section>
+
+          <section class="activity" aria-label="Game activity">
+            <p class="eyebrow">Table notes</p>
+            <ol id="event-log"></ol>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <template id="card-template">
+      <button class="card" type="button"><span class="card-rank"></span><span class="card-suit"></span></button>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
+
